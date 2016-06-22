@@ -12,7 +12,7 @@ SQL> desc job_running_monitor;
  STATUS 					    VARCHAR2(20)
  BATCH_ID				   NOT NULL VARCHAR2(20)
 ```
-Then```monitor_1.sql``` generates data like this:
+```monitor_1.sql``` will generate data like this:
 ```
 SQL> set serveroutput on
 SQL> set line 300
