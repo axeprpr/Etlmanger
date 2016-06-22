@@ -1,0 +1,43 @@
+$(document).ready(function(){
+	// function for Mornitring.	
+	var STR="";
+	var RTS="";
+	var JSON=[
+		{id:'10000',name:'RCQ_DAILY_EDW_ET',value:'-1',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10001',name:'RCQ_DAILY_EDW_LOAD',value:'102',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10002',name:'RCQ_DAILY_GR_LOAD',value:'10',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10003',name:'RCQ_DAILY_DR_LOAD',value:'55',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10004',name:'RCQ_DAILY_RPT_DATAMART_ET',value:'32',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10010',name:'RCQ_DAILY_RESPONSE_LOAD',value:'54',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10005',name:'RCQ_DAILY_RPT_ETL',value:'99',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10006',name:'RCQ_DAILY_COREMETRIC_ET',value:'33',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10007',name:'RCQ_DAILY_COREMETRIC_LOAD',value:'111',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10008',name:'RCQ_PROD_D_CH_EXTRACT',value:'322',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10009',name:'RCQ_PROD_D_OTM_TRIGGER',value:'120',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10010',name:'RCQ_PROD_D_DM_TRIGGER',value:'32',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10011',name:'RCQ_PROD_D_ENG_ET',value:'88',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10012',name:'RCQ_PROD_D_ENG_LOAD',value:'99',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10013',name:'RCQ_PROD_D_M_EDW_PROCESS' ,value:'66',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10014',name:'RCQ_COS',value:'10',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10015',name:'RCQ_WEEKLY_EDW_LOAD',value:'77',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10016',name:'RCQ_WEEKLY_GR_LOAD',value:'10',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10017',name:'RCQ_MONTHLY_DR_VISA_LOAD',value:'100',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		{id:'10018',name:'RCQ_MONTHLY_DR_LOAD',value:'100',expect_start_time:'10:00:00',duration:'6',actual_start_time:'10:00:00'},
+		];
+		
+	RTS+='<div class="table-responsive overflow"><table class="tile table table-bordered table-striped"><thead><tr><th>Load Name</th><th>Processing</th><th>StartTime</th><th>Duration</th><th>Percent</th><th>Percent</th><th>Percent</th></tr></thead><tbody>'
+	for(var k=0;k<JSON.length;k++){
+		if(JSON[k].value<0){
+			JSON[k].value=100;
+			STR='<tr><td>'+JSON[k].name+'</td><td><div class="progress progress-small"><a data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-danger" style="width: '+JSON[k].value+'%;" data-original-title="'+JSON[k].value+'%"><span class="sr-only">'+JSON[k].value+'% Complete</span></a></div></td><td>'+JSON[k].expect_start_time+'</td><td>'+JSON[k].duration+'  hours</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td></tr>';
+		}else if(JSON[k].value>100){
+			JSON[k].value=100;
+			STR='<tr><td>'+JSON[k].name+'</td><td><div class="progress progress-small"><a data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-warning" style="width: '+JSON[k].value+'%;" data-original-title="'+JSON[k].value+'%"><span class="sr-only">'+JSON[k].value+'% Complete</span></a></div></td><td>'+JSON[k].expect_start_time+'</td><td>'+JSON[k].duration+'  hours</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td></tr>';
+		}else{
+			STR='<tr><td>'+JSON[k].name+'</td><td><div class="progress progress-small"><a data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: '+JSON[k].value+'%;" data-original-title="'+JSON[k].value+'%"><span class="sr-only">'+JSON[k].value+'% Complete</span></a></div></td><td>'+JSON[k].expect_start_time+'</td><td>'+JSON[k].duration+'  hours</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td></tr>';
+		};
+	RTS+=STR;
+	};
+	RTS+='</tbody></table></div>';	
+	$("#status").append(RTS);
+})

@@ -1,0 +1,20 @@
+$(document).ready(function(){
+	// function for Mornitring.	
+	var STR="";
+	var RTS="";
+	RTS+='<div class="table-responsive overflow"><table class="tile table table-bordered table-striped"><thead><tr><th>Load Name</th><th>Processing</th><th>StartTime</th><th>Duration</th><th>Percent</th><th>Percent</th><th>Percent</th></tr></thead><tbody>'
+	for(var k=0;k<JSON.length;k++){
+		if(JSON[k].value<0){
+			JSON[k].value=100;
+			STR='<tr><td>'+JSON[k].name+'</td><td><div class="progress progress-small"><a data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-danger" style="width: '+JSON[k].value+'%;" data-original-title="'+JSON[k].value+'%"><span class="sr-only">'+JSON[k].value+'% Complete</span></a></div></td><td>'+JSON[k].expect_start_time+'</td><td>'+JSON[k].duration+'  hours</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td></tr>';
+		}else if(JSON[k].value>100){
+			JSON[k].value=100;
+			STR='<tr><td>'+JSON[k].name+'</td><td><div class="progress progress-small"><a data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-warning" style="width: '+JSON[k].value+'%;" data-original-title="'+JSON[k].value+'%"><span class="sr-only">'+JSON[k].value+'% Complete</span></a></div></td><td>'+JSON[k].expect_start_time+'</td><td>'+JSON[k].duration+'  hours</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td></tr>';
+		}else{
+			STR='<tr><td>'+JSON[k].name+'</td><td><div class="progress progress-small"><a data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: '+JSON[k].value+'%;" data-original-title="'+JSON[k].value+'%"><span class="sr-only">'+JSON[k].value+'% Complete</span></a></div></td><td>'+JSON[k].expect_start_time+'</td><td>'+JSON[k].duration+'  hours</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td><td>'+JSON[k].actual_start_time+'</td></tr>';
+		};
+	RTS+=STR;
+	};
+	RTS+='</tbody></table></div>';	
+	$("#status").append(RTS);
+})
