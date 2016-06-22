@@ -1,6 +1,6 @@
 # Etlmanger
 This website develop to monitor the ETL process of my company.
-Each ETL process will record there status into a table called JOB_RUNNING_MONITOR. So I write two procedures in database to transform the data from table to JSON.
+Each ETL process will record its status into a table called JOB_RUNNING_MONITOR. So I write two procedures in database to transform the data from table to JSON.
 Here is the structure of this table:
 ```
 SQL> desc job_running_monitor;
